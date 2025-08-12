@@ -1,5 +1,6 @@
 <script setup>
 import TheUserTable from '@/components/TheUserTable/TheUserTable.vue'
+import TheProductsTable from '@/components/TheProductsTable/TheProductsTable.vue'
 import { inject } from 'vue'
 
 const isShowUserTable = inject('isShowUserTable')
@@ -21,6 +22,7 @@ const users = [
         age: 22
     }
 ]
+
 </script>
 
 <template>
@@ -28,6 +30,8 @@ const users = [
         v-if="isShowUserTable"
         :users="users"
     />
+    <h1>Новое задание</h1>
+    <TheProductsTable/>
 </template>
 
 <style scoped>

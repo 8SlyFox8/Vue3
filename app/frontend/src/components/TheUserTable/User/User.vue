@@ -3,10 +3,7 @@ import {ref} from 'vue'
 
 const borderColor = ref("black")
 
-const userProps = defineProps({
-  user: Object,
-  isShowUserAge: Boolean
-})
+const userProps = defineProps(['user', 'isShowUserAge'])
 
 function selectUser() {
     borderColor.value = "red"
