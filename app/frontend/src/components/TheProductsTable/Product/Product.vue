@@ -36,7 +36,7 @@ const productProps = defineProps(['product'])
 .product-image {
     min-width: 20%;
     max-width: 20%;
-    height: 100%;
+    height: fit-content;
 }
 
 .product {
