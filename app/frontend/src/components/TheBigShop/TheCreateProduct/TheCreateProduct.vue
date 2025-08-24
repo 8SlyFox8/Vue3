@@ -1,0 +1,56 @@
+<script setup>
+import '@/components/TheShop/Modals/modal.css'
+import { useForm } from 'vee-validate'
+import * as yup from 'yup';
+
+const { defineField, handleSubmit } = useForm({
+  validationSchema: yup.object({
+    title: yup.string().required(),
+    description: yup.string().required()
+  }),
+});
+
+const [title, titleAttrs] = defineField('title')
+const [description, descriptionAttrs] = defineField('description')
+const onSubmit = handleSubmit(onSuccess, onInvalidSubmit)
+
+function onSuccess(values) {
+    alert("Типа отправлены")
+}
+
+function onInvalidSubmit({ values, errors, results }) {
+    alert(JSON.stringify(errors, null, 2))
+}
+</script>
+
+<template>
+    <form @submit="onSubmit">
+        <div class="create-product">
+            <label>
+                Имя товара
+                <input
+                    v-model="title"
+                    v-bind="titleAttrs"
+                />
+            </label>
+            <label>
+                Описание товара
+                <textarea
+                    v-model="description"
+                    v-bind="descriptionAttrs"
+                />
+            </label>
+            <button>
+                Создать товар
+            </button>
+        </div>
+    </form>   
+</template>
+
+<style scoped>
+.create-product {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+</style>
