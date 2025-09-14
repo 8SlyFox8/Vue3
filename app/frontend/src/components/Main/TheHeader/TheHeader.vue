@@ -1,4 +1,12 @@
 <script setup>
+import { useUserStore } from '@/stores/user'
+import { computed } from 'vue'
+
+const userStore = useUserStore()
+
+const routePiniaName = computed(() => {
+  return userStore.userName !== '' ? 'piniaUser' : 'piniaLogin'
+})
 </script>
 
 <template>
@@ -8,6 +16,7 @@
         <RouterLink :to="{name: 'componentsAndEvents'}">Компоненты props и события</RouterLink>
         <RouterLink :to="{name: 'formsSlotsDirectives'}">Формы, слоты, директивы</RouterLink>
         <RouterLink :to="{name: 'login'}">Vue router</RouterLink>
+        <RouterLink :to="{name: routePiniaName}">Реактивные данные, MVVM и особенности Vue 3</RouterLink>
     </div>
 </template>
 

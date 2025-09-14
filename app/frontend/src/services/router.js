@@ -11,6 +11,13 @@ import TheProductList from '@/components/TheBigShop/TheProductList/TheProductLis
 import TheCreateProduct from '@/components/TheBigShop/TheCreateProduct/TheCreateProduct.vue'
 import OneProductInfo from '@/components/TheBigShop/OneProductInfo/OneProductInfo.vue'
 import TheCart from '@/components/TheBigShop/TheCart/TheCart.vue'
+import PiniaView from '@/views/PiniaView/PiniaView.vue'
+import PiniaLoginView from '@/views/PiniaView/PiniaLoginView.vue'
+import PiniaUserView from '@/views/PiniaView/PiniaUserView.vue'
+import ThePiniaProductList from '@/components/ThePiniaBigShop/ThePiniaProductList/ThePiniaProductList.vue'
+import TheCreatePiniaProduct from '@/components/ThePiniaBigShop/TheCreatePiniaProduct/TheCreatePiniaProduct.vue'
+import OnePiniaProductInfo from '@/components/ThePiniaBigShop/OnePiniaProductInfo/OnePiniaProductInfo.vue'
+import ThePiniaCart from '@/components/ThePiniaBigShop/ThePiniaCart/ThePiniaCart.vue'
 
 const routes = [
   { path: '/', component: HomeView },
@@ -40,6 +47,25 @@ const routes = [
             next({ name: 'login' })
           }
         }
+      },
+    ]
+  },
+  {
+    path: '/pinia',
+    name: 'pinia',
+    component: PiniaView,
+    children: [
+      { path: 'piniaLogin', name: 'piniaLogin', component: PiniaLoginView },
+      {
+        path: 'piniaUser',
+        name: 'piniaUser',
+        component: PiniaUserView,
+        children: [
+          { path: 'productList', name: 'piniaProductList', component: ThePiniaProductList },
+          { path: 'product/:productId', name: 'piniaProduct', component: OnePiniaProductInfo },
+          { path: 'cart', name: 'piniaCart', component: ThePiniaCart },
+          { path: 'createProduct', name: 'createPiniaProduct', component: TheCreatePiniaProduct },
+        ]
       },
     ]
   },
